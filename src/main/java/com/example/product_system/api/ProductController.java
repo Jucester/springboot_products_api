@@ -3,8 +3,10 @@ package com.example.product_system.api;
 import com.example.product_system.model.Product;
 import com.example.product_system.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,7 +23,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public void addProduct(@RequestBody Product product) {
+    public void addProduct(@Valid @NonNull @RequestBody Product product) {
         productService.addProduct(product);
     }
 
@@ -42,7 +44,7 @@ public class ProductController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Product product) {
+    public void updatePerson(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Product product) {
         productService.updateProduct(id, product);
     }
 }

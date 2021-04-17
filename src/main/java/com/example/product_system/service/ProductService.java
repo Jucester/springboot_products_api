@@ -16,7 +16,7 @@ public class ProductService {
     private final ProductDao productDao;
 
     @Autowired
-    public ProductService(@Qualifier("fakerDao") ProductDao productDao) {
+    public ProductService(@Qualifier("postgres") ProductDao productDao) {
         this.productDao = productDao;
     }
 
